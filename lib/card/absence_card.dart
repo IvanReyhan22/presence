@@ -7,13 +7,15 @@ import 'package:presence/text/paragraph.dart';
 
 class AbsenceCard extends StatefulWidget {
   final String title, desc, date, type;
+  final Function(int) onPressed;
 
   const AbsenceCard(
       {Key? key,
       required this.title,
       required this.desc,
       required this.date,
-      required this.type})
+      required this.type,
+      required this.onPressed})
       : super(key: key);
 
   @override
@@ -65,7 +67,7 @@ class _AbsenceCardState extends State<AbsenceCard> {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () => widget.onPressed(1),
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(bgColor),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(

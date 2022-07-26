@@ -3,8 +3,8 @@ import 'package:presence/service/global_data.dart';
 import 'package:presence/text/paragraph.dart';
 
 class RoundedInput extends StatelessWidget {
-  final String hintText;
-  final String? type, label, error;
+  final String? hintText, type, label, error;
+  final int? maxLines;
   final IconData? icon;
   final Color color;
   final ValueChanged<String>? onChanged;
@@ -12,14 +12,15 @@ class RoundedInput extends StatelessWidget {
 
   const RoundedInput(
       {Key? key,
-      required this.hintText,
+      this.hintText,
       required this.color,
       required this.onChanged,
       required this.controller,
       this.icon,
       this.type,
       this.label,
-      this.error})
+      this.error,
+      this.maxLines})
       : super(key: key);
 
   @override
@@ -44,6 +45,7 @@ class RoundedInput extends StatelessWidget {
             borderRadius: BorderRadius.circular(GlobalData.defaultRadius),
           ),
           child: TextField(
+            maxLines: maxLines ?? 1,
             obscureText: type == 'password' ? true : false,
             controller: controller,
             onChanged: onChanged,

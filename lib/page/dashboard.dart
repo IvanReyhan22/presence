@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:presence/card/absence_card.dart';
 import 'package:presence/card/summary_card.dart';
+import 'package:presence/page/check_in.dart';
 import 'package:presence/service/global_data.dart';
 import 'package:presence/text/heading.dart';
 import 'package:presence/text/page_heading.dart';
@@ -35,11 +36,17 @@ class _DashboardState extends State<Dashboard> {
                       'https://i.pinimg.com/564x/06/63/f5/0663f52b4e6775adcd134a27853004b3.jpg',
                 ),
                 const SizedBox(height: GlobalData.spacing * 3),
-                const AbsenceCard(
+                AbsenceCard(
                   title: 'Its Holyday',
                   desc: 'Enjoy your holiday with your family at home',
                   date: '16 January 2022',
                   type: 'info',
+                  onPressed: (val) {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return const CheckIn();
+                    }));
+                  },
                 ),
                 const SizedBox(height: GlobalData.spacing * 3),
                 const Heading(
