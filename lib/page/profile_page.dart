@@ -68,7 +68,7 @@ class _ProfileState extends State<ProfilePage> {
                 const RoundedCard(
                   title: 'Company Name',
                   subTitle: 'Jln Rose no 20 Malang - 2nd Floor',
-                  icon: CustomIcons.caseIcon,
+                  icon: CustomIcons.workcase,
                 ),
                 const SizedBox(height: GlobalData.spacing * 2),
                 RoundedCard(

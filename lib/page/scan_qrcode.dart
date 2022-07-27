@@ -17,15 +17,15 @@ class _ScanQrCode extends State<ScanQrCode> {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   Barcode? result;
   QRViewController? controller;
+  bool isFlashOn = false;
 
   @override
   void reassemble() {
     super.reassemble();
     if (Platform.isAndroid) {
       controller!.pauseCamera();
-    } else if (Platform.isIOS) {
-      controller!.resumeCamera();
     }
+    controller!.resumeCamera();
   }
 
   @override
@@ -74,13 +74,58 @@ class _ScanQrCode extends State<ScanQrCode> {
               ),
             ),
             Expanded(
-                child: QRView(
-              key: qrKey,
-              onQRViewCreated: _onQRViewCreated,
-            ))
+              child: InkWell(
+                onTap: () => controller!.resumeCamera(),
+                child: _buildQrView(context),
+              ),
+            )
           ],
         ),
       ),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.symmetric(
+          vertical: GlobalData.spacing * 3,
+          horizontal: GlobalData.spacing * 2,
+        ),
+        child: FloatingActionButton(
+          onPressed: () {
+            setState(() {
+              toggleFlash();
+            });
+          },
+          child: Icon(
+            CustomIcons.flash,
+            size: GlobalData.spacing * 3,
+            color: isFlashOn == true
+                ? GlobalData.warning_400
+                : GlobalData.neutral_900,
+          ),
+          backgroundColor: GlobalData.white,
+        ),
+      ),
+    );
+  }
+
+  void toggleFlash() async {
+    setState(() {
+      isFlashOn = !isFlashOn;
+    });
+    await controller?.toggleFlash();
+  }
+
+  Widget _buildQrView(BuildContext context) {
+    var scanArea = MediaQuery.of(context).size.width * 0.8;
+
+    return QRView(
+      key: qrKey,
+      onQRViewCreated: _onQRViewCreated,
+      overlay: QrScannerOverlayShape(
+          borderColor: GlobalData.secondary_400,
+          borderRadius: GlobalData.spacing,
+          borderLength: GlobalData.spacing * 4,
+          borderWidth: GlobalData.spacing,
+          cutOutSize: scanArea),
+      onPermissionSet: (ctrl, p) => _onPermissionSet(context, ctrl, p),
     );
   }
 
@@ -91,6 +136,14 @@ class _ScanQrCode extends State<ScanQrCode> {
         result = scanData;
       });
     });
+  }
+
+  void _onPermissionSet(BuildContext context, QRViewController ctrl, bool p) {
+    if (!p) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('no Permission')),
+      );
+    }
   }
 
   @override
