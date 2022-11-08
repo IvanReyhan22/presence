@@ -1,16 +1,14 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:presence/button/profile_button.dart';
-import 'package:presence/card/rounded_card.dart';
-import 'package:presence/modal/basic_modal.dart';
-import 'package:presence/onboarding.dart';
-import 'package:presence/page/profile_edit.dart';
+import 'package:presence/widgets/button/profile_button.dart';
+import 'package:presence/widgets/card/rounded_card.dart';
+import 'package:presence/widgets/modal/basic_modal.dart';
+import 'package:presence/page/authentication/onboarding.dart';
+import 'package:presence/page/profile_edit_page.dart';
 import 'package:presence/page/reset_password.dart';
-import 'package:presence/service/custom_icons_icons.dart';
-import 'package:presence/service/global_data.dart';
-import 'package:presence/text/heading.dart';
-import 'package:presence/text/page_heading.dart';
-import 'package:presence/text/paragraph.dart';
+import 'package:presence/common/custom_icons_icons.dart';
+import 'package:presence/common/app_constants.dart';
+import 'package:presence/widgets/text/page_heading.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -27,8 +25,8 @@ class _ProfileState extends State<ProfilePage> {
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(
-              vertical: GlobalData.spacing * 5,
-              horizontal: GlobalData.spacing * 3,
+              vertical: AppConstants.spacing * 5,
+              horizontal: AppConstants.spacing * 3,
             ),
             child: Column(
               children: <Widget>[
@@ -38,7 +36,7 @@ class _ProfileState extends State<ProfilePage> {
                   onSuffixPressed: (val) {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return const ProfileEdit();
+                      return const ProfileEditPage();
                     }));
                   },
                   type: 'heading',
@@ -46,31 +44,32 @@ class _ProfileState extends State<ProfilePage> {
                   image:
                       'https://i.pinimg.com/564x/06/63/f5/0663f52b4e6775adcd134a27853004b3.jpg',
                 ),
-                const SizedBox(height: GlobalData.spacing * 4),
+                const SizedBox(height: AppConstants.spacing * 4),
                 const ProfileButton(
                   image:
                       'https://i.pinimg.com/564x/06/63/f5/0663f52b4e6775adcd134a27853004b3.jpg',
-                  size: (GlobalData.spacing * 12) + 4, // 100
+                  size: (AppConstants.spacing * 12) + 4, // 100
                 ),
-                const SizedBox(height: GlobalData.spacing),
-                const Heading(
-                  title: 'Fortune Cookie',
-                  size: 4,
-                  color: GlobalData.neutral_900,
-                  weight: FontWeight.w600,
+                const SizedBox(height: AppConstants.spacing),
+                Text(
+                  'Fortune Cookie',
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        fontWeight: FontWeight.w600,
+                      ),
                 ),
-                const Paragraph(
-                  title: 'fortunecookie@gmail.com',
-                  size: 1,
-                  color: GlobalData.neutral_500,
+                Text(
+                  'fortunecookie@gmail.com',
+                  style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                        color: AppConstants.neutral_500,
+                      ),
                 ),
-                const SizedBox(height: GlobalData.spacing * 4),
+                const SizedBox(height: AppConstants.spacing * 4),
                 const RoundedCard(
                   title: 'Company Name',
                   subTitle: 'Jln Rose no 20 Malang - 2nd Floor',
                   icon: CustomIcons.workcase,
                 ),
-                const SizedBox(height: GlobalData.spacing * 2),
+                const SizedBox(height: AppConstants.spacing * 2),
                 RoundedCard(
                   title: 'Change Password',
                   icon: CustomIcons.lock,
@@ -81,7 +80,7 @@ class _ProfileState extends State<ProfilePage> {
                     }));
                   },
                 ),
-                const SizedBox(height: GlobalData.spacing * 2),
+                const SizedBox(height: AppConstants.spacing * 2),
                 RoundedCard(
                   title: 'SignOut',
                   icon: CustomIcons.signout,

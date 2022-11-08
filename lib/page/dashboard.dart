@@ -1,20 +1,19 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:presence/card/absence_card.dart';
-import 'package:presence/card/summary_card.dart';
-import 'package:presence/page/check_in.dart';
-import 'package:presence/service/global_data.dart';
-import 'package:presence/text/heading.dart';
-import 'package:presence/text/page_heading.dart';
+import 'package:presence/page/check_in_page.dart';
+import 'package:presence/widgets/card/absence_card.dart';
+import 'package:presence/widgets/card/summary_card.dart';
+import 'package:presence/common/app_constants.dart';
+import 'package:presence/widgets/text/page_heading.dart';
 
-class Dashboard extends StatefulWidget {
-  const Dashboard({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _DashboardState();
+  State<StatefulWidget> createState() => _DashboardPage();
 }
 
-class _DashboardState extends State<Dashboard> {
+class _DashboardPage extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,8 +21,8 @@ class _DashboardState extends State<Dashboard> {
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(
-              vertical: GlobalData.spacing * 5,
-              horizontal: GlobalData.spacing * 3,
+              vertical: AppConstants.spacing * 5,
+              horizontal: AppConstants.spacing * 3,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,7 +34,7 @@ class _DashboardState extends State<Dashboard> {
                   image:
                       'https://i.pinimg.com/564x/06/63/f5/0663f52b4e6775adcd134a27853004b3.jpg',
                 ),
-                const SizedBox(height: GlobalData.spacing * 3),
+                const SizedBox(height: AppConstants.spacing * 3),
                 AbsenceCard(
                   title: 'Its Holyday',
                   desc: 'Enjoy your holiday with your family at home',
@@ -44,18 +43,19 @@ class _DashboardState extends State<Dashboard> {
                   onPressed: (val) {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return const CheckIn();
+                      return const CheckInPage();
                     }));
                   },
                 ),
-                const SizedBox(height: GlobalData.spacing * 3),
-                const Heading(
-                  title: 'Summary',
-                  size: 6,
-                  color: GlobalData.neutral_900,
-                  weight: FontWeight.w600,
+                const SizedBox(height: AppConstants.spacing * 3),
+                Text(
+                  'Summary',
+                  style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                        color: AppConstants.neutral_900,
+                        fontWeight: FontWeight.w600,
+                      ),
                 ),
-                const SizedBox(height: GlobalData.spacing * 3),
+                const SizedBox(height: AppConstants.spacing * 3),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -72,7 +72,7 @@ class _DashboardState extends State<Dashboard> {
                             date: 'Januaru 2022',
                           ),
                           SizedBox(
-                            height: GlobalData.spacing * 3,
+                            height: AppConstants.spacing * 3,
                           ),
                           SummaryCard(
                             theme: 'secondary',
@@ -86,7 +86,7 @@ class _DashboardState extends State<Dashboard> {
                       ),
                     ),
                     const SizedBox(
-                      width: (GlobalData.spacing * 2) + 4,
+                      width: (AppConstants.spacing * 2) + 4,
                     ),
                     Expanded(
                       child: Column(
@@ -100,7 +100,7 @@ class _DashboardState extends State<Dashboard> {
                             date: 'Januaru 2022',
                           ),
                           SizedBox(
-                            height: GlobalData.spacing * 3,
+                            height: AppConstants.spacing * 3,
                           ),
                           SummaryCard(
                             theme: 'secondary',

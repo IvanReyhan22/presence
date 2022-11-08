@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:presence/button/circular_image_button.dart';
-import 'package:presence/button/main_button.dart';
-import 'package:presence/input/date_picker.dart';
-import 'package:presence/input/rounded_input.dart';
+import 'package:presence/widgets/button/circular_image_button.dart';
+import 'package:presence/widgets/button/main_button.dart';
+import 'package:presence/widgets/input/date_picker.dart';
+import 'package:presence/widgets/input/rounded_input.dart';
 import 'package:presence/page/main_app.dart';
 import 'package:presence/page/permit_confirmation.dart';
-import 'package:presence/service/custom_icons_icons.dart';
-import 'package:presence/service/global_data.dart';
-import 'package:presence/text/paragraph.dart';
+import 'package:presence/common/custom_icons_icons.dart';
+import 'package:presence/common/app_constants.dart';
 
 class PermitPage extends StatelessWidget {
   const PermitPage({Key? key}) : super(key: key);
@@ -20,8 +19,8 @@ class PermitPage extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            vertical: GlobalData.spacing * 5,
-            horizontal: GlobalData.spacing * 3,
+            vertical: AppConstants.spacing * 5,
+            horizontal: AppConstants.spacing * 3,
           ),
           child: CustomScrollView(slivers: [
             SliverFillRemaining(
@@ -38,15 +37,15 @@ class PermitPage extends StatelessWidget {
                         },
                         child: const Icon(
                           CustomIcons.arrowleft,
-                          size: GlobalData.spacing * 4,
-                          color: GlobalData.neutral_900,
+                          size: AppConstants.spacing * 4,
+                          color: AppConstants.neutral_900,
                         ),
                       ),
-                      const Paragraph(
-                        title: 'Permit',
-                        size: 1,
-                        color: GlobalData.neutral_500,
-                        weight: FontWeight.w500,
+                      Text(
+                        'Permit',
+                        style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                            color: AppConstants.neutral_500,
+                            fontWeight: FontWeight.w500),
                       ),
                       InkWell(
                         onTap: () {
@@ -57,46 +56,47 @@ class PermitPage extends StatelessWidget {
                         },
                         child: const Icon(
                           Icons.close,
-                          size: GlobalData.spacing * 4,
-                          color: GlobalData.neutral_900,
+                          size: AppConstants.spacing * 4,
+                          color: AppConstants.neutral_900,
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: GlobalData.spacing * 3),
+                  const SizedBox(height: AppConstants.spacing * 3),
                   Row(
-                    children: const <Widget>[
-                      CircularImageButton(
+                    children: <Widget>[
+                      const CircularImageButton(
                         icon: CustomIcons.camera,
-                        size: GlobalData.spacing * 6,
+                        size: AppConstants.spacing * 6,
                       ),
-                      SizedBox(width: GlobalData.spacing * 2),
-                      Paragraph(
-                        title: 'Document / image',
-                        size: 2,
-                        color: GlobalData.neutral_500,
-                      )
+                      const SizedBox(width: AppConstants.spacing * 2),
+                      Text(
+                        'Document / image',
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                              color: AppConstants.neutral_500,
+                            ),
+                      ),
                     ],
                   ),
-                  const SizedBox(height: GlobalData.spacing * 3),
+                  const SizedBox(height: AppConstants.spacing * 3),
                   DatePicker(
                     icon: CustomIcons.calendar,
                     label: 'Date',
                     hintText: '15 January 2022',
-                    color: GlobalData.neutral_500,
+                    color: AppConstants.neutral_500,
                     onChanged: (val) {},
                     controller: _controller,
                   ),
-                  const SizedBox(height: GlobalData.spacing * 3),
+                  const SizedBox(height: AppConstants.spacing * 3),
                   RoundedInput(
                     label: 'Reason',
-                    color: GlobalData.neutral_500,
+                    color: AppConstants.neutral_500,
                     onChanged: (val) {},
                     controller: _controller,
                     maxLines: 8,
                   ),
                   const Expanded(
-                      child: SizedBox(height: GlobalData.spacing * 3)),
+                      child: SizedBox(height: AppConstants.spacing * 3)),
                   Row(
                     mainAxisSize: MainAxisSize.max,
                     children: <Widget>[
@@ -107,7 +107,7 @@ class PermitPage extends StatelessWidget {
                           onPressed: (int val) {},
                         ),
                       ),
-                      const SizedBox(width: (GlobalData.spacing * 2) + 4),
+                      const SizedBox(width: (AppConstants.spacing * 2) + 4),
                       Expanded(
                         child: MainButton(
                           title: 'Submit',
