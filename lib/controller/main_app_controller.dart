@@ -1,13 +1,13 @@
 import 'package:get/get.dart';
-import 'package:presence/page/dashboard.dart';
-import 'package:presence/page/notification_page.dart';
-import 'package:presence/page/profile_page.dart';
-import 'package:presence/page/record_page.dart';
+import 'package:presence/page/main/home_page.dart';
+import 'package:presence/page/main/notification_page.dart';
+import 'package:presence/page/main/profile_page.dart';
+import 'package:presence/page/main/record_page.dart';
 
 class MainAppController extends GetxController {
   RxInt currentPageIndex = 0.obs;
   final pages = [
-    const HomePage(),
+    HomePage(),
     const RecordPage(),
     const NotificationPage(),
     const ProfilePage()

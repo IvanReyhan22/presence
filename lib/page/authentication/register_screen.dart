@@ -71,6 +71,7 @@ class RegisterPage extends StatelessWidget {
                   title: 'sign_up'.tr,
                   type: 'primary',
                   onPressed: () => Get.toNamed('/register_company'),
+                  isLoading: false,
                 ),
                 const SizedBox(
                   height: AppConstants.spacing * 5,

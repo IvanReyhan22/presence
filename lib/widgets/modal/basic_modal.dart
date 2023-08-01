@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:presence/widgets/button/main_button.dart';
 import 'package:presence/common/app_constants.dart';
 
 class BasicModal {
   static void alertDialog(context, String title, String content, String no,
-      String ok, Function(int) okPressed) {
+      String ok, Function() okPressed) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -42,9 +43,8 @@ class BasicModal {
                   child: MainButton(
                     title: 'Cancel',
                     type: 'secondary',
-                    onPressed: (int val) {
-                      Navigator.pop(context);
-                    },
+                    onPressed: () => Get.back(),
+                    isLoading: false,
                   ),
                 ),
                 const SizedBox(width: (AppConstants.spacing * 2) + 4),
@@ -52,7 +52,8 @@ class BasicModal {
                   child: MainButton(
                     title: 'Sign Out',
                     type: 'primary',
-                    onPressed: (val) => okPressed(1),
+                    onPressed: () => okPressed(),
+                    isLoading: false,
                   ),
                 ),
               ],

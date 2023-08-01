@@ -55,6 +55,7 @@ class RegisterCompany extends StatelessWidget {
                       title: 'sign_up'.tr,
                       type: 'primary',
                       onPressed: () => Get.toNamed('/greeting'),
+                      isLoading: false,
                     ),
                   ],
                 )

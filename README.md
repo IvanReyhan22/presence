@@ -1,12 +1,12 @@
-![heading](/image/heading.png)
+![heading](/readme/heading.png)
 
 
 <h1 align="center">Presence App</h1>
 <p align="center">Absentee application to simplify the attendance checking process </p>
-<h3 align="center">Overall progress <strong>40%</strong></h3>
+<h3 align="center">Overall progress <strong>50%</strong></h3>
 
 &nbsp;
-![heading](/image/presence.png)
+![heading](/readme/presence.png)
 &nbsp;
 
 ## Key Features
@@ -35,7 +35,7 @@
 
 ## Download App
 
-Download link will be available when overall progress reaches 50%
+[Presence Static Apk](/readme/presence.apk)
 &nbsp;
 
 ## Getting Started

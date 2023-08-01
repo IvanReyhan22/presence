@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:presence/widgets/button/main_button.dart';
 import 'package:presence/widgets/input/rounded_input.dart';
 import 'package:presence/common/custom_icons_icons.dart';
@@ -95,8 +96,9 @@ class _ResetPasswordState extends State<ResetPassword> {
                         title: 'Cancel',
                         type: 'secondary',
                         onPressed: () {
-                          Navigator.pop(context);
+                          Get.back();
                         },
+                        isLoading: false,
                       ),
                     ),
                     const SizedBox(width: (AppConstants.spacing * 2) + 4),
@@ -105,8 +107,9 @@ class _ResetPasswordState extends State<ResetPassword> {
                         title: 'Save',
                         type: 'primary',
                         onPressed: () {
-                          Navigator.pop(context);
+                          Get.back();
                         },
+                        isLoading: false,
                       ),
                     ),
                   ],

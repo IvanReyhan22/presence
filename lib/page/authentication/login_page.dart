@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconify_flutter/icons/ph.dart';
 import 'package:presence/controller/authentication/login_page_controller.dart';
+import 'package:presence/utils/app_config.dart';
 import 'package:presence/widgets/button/main_button.dart';
 import 'package:presence/widgets/button/rounded_image_button.dart';
 import 'package:presence/widgets/input/rounded_input.dart';
@@ -35,10 +36,11 @@ class LoginPage extends StatelessWidget {
                   runSpacing: AppConstants.spacing * 2,
                   children: [
                     RoundedInput(
-                      hintText: 'username',
+                      hintText: 'email',
                       color: AppConstants.neutral_500,
                       onChanged: (val) {},
-                      controller: pageController.usernameController,
+                      controller: pageController.emailController,
+                      textInputType: TextInputType.emailAddress,
                     ),
                     RoundedInput(
                       hintText: 'Password',
@@ -64,14 +66,29 @@ class LoginPage extends StatelessWidget {
                           textAlign: TextAlign.end,
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
-                const SizedBox(height: AppConstants.spacing * 5),
+                const SizedBox(height: AppConstants.spacing * 2),
+                Obx(
+                  () => Text(
+                    pageController.loginErr.value,
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          color: AppConstants.secondary_400,
+                          fontStyle: FontStyle.italic,
+                        ),
+                  ),
+                ),
+                const SizedBox(height: AppConstants.spacing * 3),
                 MainButton(
                   title: 'sign_in'.tr,
                   type: 'primary',
-                  onPressed: () => Get.toNamed('/greeting'),
+                  // onPressed: () => pageController.login(),
+                  onPressed: () => Get.offAllNamed('/main_app'),
+                  isLoading: pageController.state == ResultState.loading
+                      ? true
+                      : false,
                 ),
                 const SizedBox(height: (AppConstants.spacing * 7) + 4),
                 Column(

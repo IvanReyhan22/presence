@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:presence/controller/authentication/onboarding_page_controller.dart';
 import 'package:presence/widgets/button/main_button.dart';
 import 'package:presence/common/app_constants.dart';
 import 'package:get/get.dart';
 import 'package:presence/widgets/text/title_group.dart';
 
 class OnBoarding extends StatelessWidget {
-  const OnBoarding({Key? key}) : super(key: key);
+  OnBoarding({Key? key}) : super(key: key);
+
+  final pageController = Get.put(OnBoardingPageController());
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +41,7 @@ class OnBoarding extends StatelessWidget {
                         title: 'sign_up'.tr,
                         type: 'secondary',
                         onPressed: () => Get.toNamed('/register'),
+                        isLoading: false,
                       ),
                     ),
                     const SizedBox(width: (AppConstants.spacing * 2) + 4),
@@ -46,6 +50,7 @@ class OnBoarding extends StatelessWidget {
                         title: 'sign_in'.tr,
                         type: 'primary',
                         onPressed: () => Get.toNamed('/login'),
+                        isLoading: false,
                       ),
                     ),
                   ],

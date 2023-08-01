@@ -9,6 +9,7 @@ class RoundedInput extends StatelessWidget {
   final Color color;
   final ValueChanged<String>? onChanged;
   final TextEditingController? controller;
+  final TextInputType? textInputType;
 
   const RoundedInput(
       {Key? key,
@@ -21,7 +22,8 @@ class RoundedInput extends StatelessWidget {
       this.error,
       this.maxLines,
       this.suffixIcon,
-      this.prefixIcon})
+      this.prefixIcon,
+      this.textInputType})
       : super(key: key);
 
   @override
@@ -52,6 +54,7 @@ class RoundedInput extends StatelessWidget {
             maxLines: maxLines ?? 1,
             obscureText: type == 'password' ? true : false,
             controller: controller,
+            keyboardType: textInputType ?? TextInputType.text,
             onChanged: onChanged,
             style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                 color: AppConstants.black, fontWeight: FontWeight.w600),

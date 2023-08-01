@@ -1,5 +1,6 @@
 import 'package:circular_countdown/circular_countdown.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:presence/common/custom_icons_icons.dart';
 import 'package:presence/widgets/button/main_button.dart';
 import 'package:presence/common/app_constants.dart';
@@ -22,12 +23,9 @@ class MyModalBottomSheet {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Container(
-                color: AppConstants.purple_200,
-                child: const Icon(
-                  CustomIcons.clock,
-                  size: AppConstants.spacing * 3,
-                ),
+              const Icon(
+                CustomIcons.clock,
+                size: AppConstants.spacing * 3,
               ),
               // RoundedImageButton(
               //   onPressed: (val) {},
@@ -38,6 +36,7 @@ class MyModalBottomSheet {
               const SizedBox(height: AppConstants.spacing * 3),
               Text(
                 'Heads Up, 15 minutes before late',
+                textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                       color: AppConstants.neutral_900,
                       fontWeight: FontWeight.w600,
@@ -46,6 +45,7 @@ class MyModalBottomSheet {
               const SizedBox(height: AppConstants.spacing / 2),
               Text(
                 'Wakey wakeyyy, your about to be late get going now.',
+                textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodySmall!.copyWith(
                       color: AppConstants.neutral_500,
                     ),
@@ -73,7 +73,8 @@ class MyModalBottomSheet {
                     child: MainButton(
                       title: 'Permit',
                       type: 'secondary',
-                      onPressed: () {},
+                      onPressed: () => Get.toNamed('/permit_page'),
+                      isLoading: false,
                     ),
                   ),
                   const SizedBox(width: (AppConstants.spacing * 2) + 4),
@@ -81,7 +82,8 @@ class MyModalBottomSheet {
                     child: MainButton(
                       title: 'Scan Qr Code',
                       type: 'primary',
-                      onPressed: () {},
+                      onPressed: () => Get.toNamed('/scan_qr'),
+                      isLoading: false,
                     ),
                   ),
                 ],

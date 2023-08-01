@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:presence/widgets/button/main_button.dart';
 import 'package:presence/widgets/button/profile_button.dart';
 import 'package:presence/widgets/button/rounded_image_button.dart';
@@ -95,8 +96,9 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                       title: 'Cancel',
                       type: 'secondary',
                       onPressed: () {
-                        Navigator.pop(context);
+                        Get.back();
                       },
+                      isLoading: false,
                     ),
                   ),
                   const SizedBox(width: (AppConstants.spacing * 2) + 4),
@@ -105,8 +107,9 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                       title: 'Update',
                       type: 'primary',
                       onPressed: () {
-                        Navigator.pop(context);
+                        Get.back();
                       },
+                      isLoading: false,
                     ),
                   ),
                 ],

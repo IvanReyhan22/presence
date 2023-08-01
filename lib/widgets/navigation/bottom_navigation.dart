@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:presence/page/dashboard.dart';
-import 'package:presence/page/notification_page.dart';
-import 'package:presence/page/profile_page.dart';
-import 'package:presence/page/record_page.dart';
+import 'package:presence/page/main/home_page.dart';
+import 'package:presence/page/main/notification_page.dart';
+import 'package:presence/page/main/profile_page.dart';
+import 'package:presence/page/main/record_page.dart';
 import 'package:presence/common/app_constants.dart';
 
 class BottomNavigation extends StatefulWidget {
@@ -20,7 +20,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
     switch (index) {
       case 0:
         Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return const HomePage();
+          return HomePage();
         }));
         break;
       case 1:

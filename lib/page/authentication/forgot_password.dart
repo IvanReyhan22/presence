@@ -49,6 +49,7 @@ class ForgotPassword extends StatelessWidget {
                       height: AppConstants.spacing * 5,
                     ),
                     MainButton(
+                      isLoading: false,
                       title: 'reset'.tr,
                       type: 'primary',
                       onPressed: (int val) => Get.toNamed('/login'),
